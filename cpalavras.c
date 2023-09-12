@@ -42,7 +42,7 @@ int main(){
 
 	//preenche matriz para exemplo: 
 	for (i = 0; i < 100; i++){
-		b[i] = 'a';
+		b[i] = 'a' + rand() % 26;
 	}
 	
 	//randomiza um número e obtem os espaços em cada direção(vai continuar aleatorizando até conseguir espaço para palavra)
