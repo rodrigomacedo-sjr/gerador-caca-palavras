@@ -174,6 +174,14 @@ int main(){
 		if ((i + 1) % 10 == 0) printf("\n");
 	}
 
+	// limpa o terminal por razoes esteticas
+	#ifdef _WIN32
+        	system("cls");
+	#else
+        	system("clear");
+	#endif
+	
+	// alguma coisa
 	FILE *file = fopen("caca_palavra.txt", "w");
 	if(file == NULL) {
         	perror("Erro ao abrir o arquivo!\n");
