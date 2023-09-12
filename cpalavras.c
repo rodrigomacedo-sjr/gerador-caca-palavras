@@ -14,32 +14,38 @@ int main(){
 	int num, l, c;
 	int tamP = 5;
 	int max = qtdL * qtdC;
-    int linhas, colunas;
-    char palavras[100][47]; 
+	int linhas, colunas;
+	char palavras[100][47]; 
 
-	// pega input do usuario
-    printf("Digite o numero de linhas: ");
-    scanf("%d", &linhas);
-    printf("Digite o numero de colunas: ");
+	// pega numero de linhas e colunas e testa pra erro
+	printf("Digite o numero de linhas: ");
+	scanf("%d", &linhas);
+	printf("Digite o numero de colunas: ");
 	scanf("%d", &colunas);
 
-    // armazena ate 100 palavras ate que o usuario insira 0
-    while(1)
-    {
-        printf("Insira palavra %i (0 para prosseguir): ", i + 1);
-        scanf("%s", palavras[i]);
+ 	if (linhas <= 0 || colunas <= 0)
+	{
+		printf("Número inválido de linhas ou colunas.\n");
+		return 2;
+	}
 
-        if (strcmp(palavras[i], "0") == 0) break;
+	// armazena ate 100 palavras ate que o usuario insira 0
+	while(1)
+	{
+        	printf("Insira palavra %i (0 para prosseguir): ", i + 1);
+        	scanf("%s", palavras[i]);
 
-        i++;
-    }
+        	if (strcmp(palavras[i], "0") == 0) break;
 
-//preenche matriz para exemplo: 
+        	i++;
+    	}
+
+	//preenche matriz para exemplo: 
 	for (i = 0; i < 100; i++){
 		b[i] = 'a';
 	}
 	
-//randomiza um número e obtem os espaços em cada direção(vai continuar aleatorizando até conseguir espaço para palavra)
+	//randomiza um número e obtem os espaços em cada direção(vai continuar aleatorizando até conseguir espaço para palavra)
 	while (esq < tamP && dir < tamP && cim < tamP && baix < tamP && esq_cim <tamP && dir_cim <tamP && esq_baix < tamP && dir_baix <tamP){
 		
 		num = rand() % max;
@@ -168,24 +174,24 @@ int main(){
 		if ((i + 1) % 10 == 0) printf("\n");
 	}
 
-    FILE *file = fopen("caca_palavra.txt", "w");
-    if(file == NULL) {
-        perror("Erro ao abrir o arquivo!\n");
-        return 1;
-    }
+	FILE *file = fopen("caca_palavra.txt", "w");
+	if(file == NULL) {
+        	perror("Erro ao abrir o arquivo!\n");
+        	return 1;
+    	}
 
-    for (i = 0; i < 100; i++) 
-    {
-        fputc(b[i], file);
-        if ((i + 1) % 10 == 0) {
-            fputc('\n', file);
-        }
+    	for (i = 0; i < 100; i++) 
+    	{
+        	fputc(b[i], file);
+        	if ((i + 1) % 10 == 0) {
+            		fputc('\n', file);
+        	}
         else {
             fputc(' ', file);
         }
-    }
+    	}
     
-    fclose(file);
+	fclose(file);
 
 	return 0;
 }
